@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ТЕХНОЦЕНТР | РЕМОНТ ТЕХНИКИ в Златоусте</title>
+    <!-- Фавиконка -->
+    <link rel="icon" href="data:image/svg+xml,
+        <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+            <rect width='100' height='100' rx='15' fill='%23FF6B00'/>
+            <text x='50' y='68' font-family='Arial' font-size='48' 
+                  font-weight='900' fill='white' text-anchor='middle'>ТЦ</text>
+        </svg>" 
+        type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B00;
+            --primary-dark: #E55A00;
+            --dark: #0A0A0A;
+            --gray: #222222;
+            --light: #F5F5F5;
+            --text: #FFFFFF;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--dark); 
+            color: var(--text);
+            overflow-x: hidden;
+        }
+        
+        /* Шапка */
+        .header {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--primary);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: white;
+            text-decoration: none;
+        }
+        .logo-badge {
+            width: 45px;
+            height: 45px;
+            background: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 900;
+            font-size: 1.3rem;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            color: #CCCCCC;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+        .nav-links a:hover { color: var(--primary); }
+        .phone-btn {
+            background: var(--primary);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+        .phone-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        /* Модальные окна */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-content {
+            background: #1A1A1A;
+            padding: 2.5rem;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 600px;
+            border: 2px solid var(--primary);
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 1.8rem;
+            color: #999;
+            cursor: pointer;
+            transition: color 0.3s;
+            z-index: 1;
+        }
+        .close-modal:hover { color: var(--primary); }
+        .modal-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        .modal-subtitle {
+            color: #999;
+            margin-bottom: 1.5rem;
+        }
+        .price-list {
+            margin: 1.5rem 0;
+            background: #222;
+            padding: 1.5rem;
+            border-radius: 10px;
+        }
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #333;
+            align-items: flex-start;
+        }
+        .price-item:last-child { border-bottom: none; }
+        .price-value {
+            color: var(--primary);
+            font-weight: 700;
+            text-align: right;
+            min-width: 100px;
+        }
+        
+        /* Герой */
+        .hero {
+            padding: 160px 0 80px;
+            background: 
+                linear-gradient(rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.9)),
+                url('https://i.ibb.co/k2HjJRmZ/a-w423840-01.jpg') center/cover;
+            position: relative;
+        }
+        .hero-content {
+            max-width: 800px;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+        .hero h1 span { color: var(--primary); }
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: #CCCCCC;
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+        .hero-features {
+            display: flex;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 107, 0, 0.1);
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            border-left: 3px solid var(--primary);
+        }
+        .feature i { color: var(--primary); }
+        
+        /* Бренды - БОЛЬШИЕ иконки, кроме Sony и Asus */
+        .brands {
+            padding: 80px 0;
+            background: var(--dark);
+            text-align: center;
+        }
+        .brands-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+        .brands-subtitle {
+            color: #AAAAAA;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+        .brands-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2.5rem;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .brand-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            transition: all 0.3s;
+            padding: 0.5rem;
+        }
+        .brand-item:hover {
+            transform: translateY(-5px);
+        }
+        .brand-item img {
+            max-height: 70px;
+            width: auto;
+            object-fit: contain;
+        }
+        /* Большие иконки для всех, кроме Sony и Asus */
+        .brand-item.apple img { max-height: 70px !important; }
+        .brand-item.samsung img { max-height: 70px !important; }
+        .brand-item.xiaomi img { max-height: 70px !important; }
+        .brand-item.huawei img { max-height: 70px !important; }
+        .brand-item.lenovo img { max-height: 70px !important; }
+        .brand-item.hp img { max-height: 70px !important; }
+        /* Sony и Asus - МЕНЬШЕ */
+        .brand-item.asus img { max-height: 45px !important; }
+        .brand-item.sony img { max-height: 40px !important; }
+        /* Цвета */
+        .brand-item.apple img { filter: brightness(0) invert(1); }
+        .brand-item.sony img { filter: brightness(0) invert(1); }
+        .brand-item.asus img { filter: brightness(0) invert(1); }
+        
+        /* Услуги - КНОПКИ ВЫРОВНЕНЫ */
+        .services {
+            padding: 100px 0;
+            background: var(--gray);
+        }
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: #AAAAAA;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .service-card {
+            background: #1A1A1A;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            border: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+        }
+        .service-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            flex-shrink: 0;
+        }
+        .service-image:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: linear-gradient(to top, rgba(26,26,26,0.8), transparent);
+        }
+        .service-content {
+            padding: 1.8rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        .service-list {
+            list-style: none;
+            margin: 1.5rem 0;
+            flex-grow: 1;
+        }
+        .service-list li {
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .service-list li:last-child { border-bottom: none; }
+        .price {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-align: right;
+            min-width: 100px;
+        }
+        .service-btn {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            background: var(--primary);
+            color: white;
+            padding: 0.9rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: auto;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .service-btn:hover { background: var(--primary-dark); }
+        
+        /* Почему выбирают нас */
+        .advantages {
+            padding: 80px 0;
+            background: var(--dark);
+        }
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .advantage-card {
+            text-align: center;
+            padding: 2rem;
+            background: #1A1A1A;
+            border-radius: 12px;
+            border: 1px solid #333;
+        }
+        .advantage-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        .advantage-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        /* Частые проблемы - ИСПРАВЛЕНО: кликабельные карточки */
+        .problems {
+            padding: 80px 0;
+            background: var(--gray);
+        }
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        .problem-card {
+            background: #1A1A1A;
+            padding: 1.8rem;
+            border-radius: 12px;
+            border: 1px solid #333;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .problem-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 107, 0, 0.15);
+        }
+        .problem-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: var(--primary);
+        }
+        .problem-card h4 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .problem-card h4::after {
+            content: '→';
+            color: var(--primary);
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        .problem-card:hover h4::after {
+            transform: translateX(5px);
+        }
+        .problem-card p {
+            color: #CCCCCC;
+            line-height: 1.6;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+        .problem-more {
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            display: inline-block;
+        }
+        
+        /* Форма */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #CCCCCC;
+            font-weight: 600;
+        }
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: #222;
+            border: 1px solid #444;
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 1rem;
+            font-family: 'Inter', sans-serif;
+        }
+        .submit-btn:hover { background: var(--primary-dark); }
+        
+        /* Контакты */
+        .contacts {
+            padding: 80px 0;
+            background: var(--dark);
+        }
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+        }
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: #1A1A1A;
+            border-radius: 10px;
+        }
+        .contact-icon {
+            color: var(--primary);
+            font-size: 1.5rem;
+            min-width: 40px;
+        }
+        .map {
+            width: 100%;
+            height: 400px;
+            border-radius: 12px;
+            border: none;
+            background: #1A1A1A;
+        }
+        
+        /* Футер */
+        .footer {
+            background: #0A0A0A;
+            padding: 60px 0 30px;
+            border-top: 1px solid #333;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .footer-about {
+            color: #999;
+            line-height: 1.6;
+        }
+        .footer h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        .footer-links {
+            list-style: none;
+        }
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        .footer-links a {
+            color: #999;
+            text-decoration: none;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        /* Мобильное меню */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+            background: none;
+            border: none;
+            padding: 10px;
+        }
+        .menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+        
+        /* Адаптив */
+        @media (max-width: 992px) {
+            .contacts-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .brands-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        }
+        @media (max-width: 768px) {
+            .menu-toggle { display: flex; }
+            .nav { flex-direction: row; justify-content: space-between; }
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: 0.3s;
+                border-bottom: 2px solid var(--primary);
+                z-index: 999;
+            }
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            .hero { padding: 140px 0 60px; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero-subtitle { font-size: 1.1rem; }
+            .hero-features { flex-direction: column; gap: 1rem; }
+            .section-title { font-size: 2.2rem; }
+            .modal-content { 
+                padding: 2rem 1.5rem; 
+                max-height: 85vh;
+            }
+            .brands-grid { 
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            .brand-item {
+                height: 90px;
+            }
+            .service-card { max-width: 100%; }
+            .map { height: 300px; }
+            .problems-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.8rem; }
+            .phone-btn { 
+                padding: 0.7rem 1.2rem; 
+                font-size: 1rem;
+            }
+            .section-title { font-size: 1.8rem; }
+            .advantages-grid { grid-template-columns: 1fr; }
+            .brands-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="#" class="logo">
+                    <div class="logo-badge">ТЦ</div>
+                    <span>ТЕХНОЦЕНТР</span>
+                </a>
+                
+                <button class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <div class="nav-links" id="navLinks">
+                    <a href="#services">Услуги</a>
+                    <a id="showPricesBtn">Цены</a>
+                    <a href="#advantages">Преимущества</a>
+                    <a href="#contacts">Контакты</a>
+                    <button class="phone-btn" id="showOrderBtn">
+                        <i class="fas fa-phone"></i>
+                        +7 (3513) 60-77-77
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Модальное окно цен -->
+    <div class="modal" id="pricesModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closePrices">&times;</span>
+            <h2 class="modal-title">ПРАЙС-ЛИСТ</h2>
+            <p class="modal-subtitle">Актуальные цены на ремонт</p>
+            
+            <div class="price-list">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">Телефоны и планшеты</h3>
+                <div class="price-item">
+                    <span>Замена стекла</span>
+                    <span class="price-value">от 1 500 ₽</span>
+                </div>
+                <div class="price-item">
+                    <span>Замена дисплея</span>
+                    <span class="price-value">от 3 500 ₽</span>
+                </div>
+                <div class="price-item">
+                    <span>Замена аккумулятора</span>
+                    <span class="price-value">от 1 800 ₽</span>
+                </div>
+                <div class="price-item">
+                    <span>Ремонт после воды</span>
+                    <span class="price-value">от 2 500 ₽</span>
+                </div>
+            </div>
+            
+            <div class="price-list">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">Ноутбуки</h3>
+                <div class="price-item">
+                    <span>Диагностика</span>
+                    <span class="price-value">бесплатно</span>
+                </div>
+                <div class="price-item">
+                    <span>Чистка + термопаста</span>
+                    <span class="price-value">от 2 000 ₽</span>
+                </div>
+                <div class="price-item">
+                    <span>Ремонт материнской платы</span>
+                    <span class="price-value">от 3 500 ₽</span>
+                </div>
+                <div class="price-item">
+                    <span>Замена матрицы</span>
+                    <span class="price-value">от 4 500 ₽</span>
+                </div>
+                <div class="price-item">
+                    <span>Установка SSD</span>
+                    <span class="price-value">от 1 500 ₽</span>
+                </div>
+            </div>
+            
+            <div class="price-list">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">Игровые консоли</h3>
+                <div class="price-item">
+                    <span>Чистка PlayStation/Xbox</span>
+                    <span class="price-value">от 2 500 ₽</span>
+                </div>
+                <div class="price-item">
+                    <span>Замена термопасты</span>
+                    <span class="price-value">от 2 000 ₽</span>
+                </div>
+                <div class="price-item">
+                    <span>Ремонт блока питания</span>
+                    <span class="price-value">от 3 000 ₽</span>
+                </div>
+            </div>
+            
+            <button class="service-btn" id="orderFromPrices">
+                <i class="fas fa-calendar-check"></i>
+                ЗАПИСАТЬСЯ
+            </button>
+        </div>
+    </div>
+
+    <!-- Модальное окно заявки -->
+    <div class="modal" id="orderModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeOrder">&times;</span>
+            <h2 class="modal-title">ЗАПИСАТЬСЯ НА РЕМОНТ</h2>
+            <p class="modal-subtitle">Мы перезвоним вам в течение 5 минут</p>
+            
+            <form id="repairForm">
+                <div class="form-group">
+                    <label for="orderName">Ваше имя *</label>
+                    <input type="text" id="orderName" placeholder="Иван Иванов" required>
+                </div>
+                <div class="form-group">
+                    <label for="orderPhone">Телефон *</label>
+                    <input type="tel" id="orderPhone" placeholder="+7 (900) 123-45-67" required>
+                </div>
+                <div class="form-group">
+                    <label for="orderDevice">Что ремонтируем?</label>
+                    <select id="orderDevice">
+                        <option>Телефон</option>
+                        <option>Ноутбук</option>
+                        <option>Планшет</option>
+                        <option>Игровая консоль</option>
+                        <option>Другое</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="orderProblem">Опишите проблему</label>
+                    <textarea id="orderProblem" rows="3" placeholder="Например: разбит экран, не включается..."></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i>
+                    ОТПРАВИТЬ ЗАЯВКУ
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно проблемы -->
+    <div class="modal" id="problemModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeProblem">&times;</span>
+            <h2 class="modal-title" id="problemModalTitle">РЕШЕНИЕ ПРОБЛЕМЫ</h2>
+            <p class="modal-subtitle" id="problemModalSubtitle">Подробное описание ремонта</p>
+            
+            <div class="price-list">
+                <h3 style="color: var(--primary); margin-bottom: 1rem;">Причины проблемы</h3>
+                <div id="problemCauses">
+                    <!-- Сюда вставляются причины -->
+                </div>
+                
+                <h3 style="color: var(--primary); margin-bottom: 1rem; margin-top: 1.5rem;">Наше решение</h3>
+                <div id="problemSolution">
+                    <!-- Сюда вставляется решение -->
+                </div>
+                
+                <h3 style="color: var(--primary); margin-bottom: 1rem; margin-top: 1.5rem;">Сроки и стоимость</h3>
+                <div id="problemTimeCost">
+                    <!-- Сюда вставляются сроки и стоимость -->
+                </div>
+            </div>
+            
+            <button class="service-btn" id="orderFromProblem">
+                <i class="fas fa-calendar-check"></i>
+                ЗАПИСАТЬСЯ НА РЕМОНТ
+            </button>
+        </div>
+    </div>
+
+    <!-- Герой -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Срочный ремонт техники <br><span>в Златоусте</span></h1>
+                <p class="hero-subtitle">
+                    Ремонтируем телефоны, ноутбуки, планшеты, игровые приставки. 
+                    Бесплатная диагностика за 15 минут. Гарантия до 2 лет.
+                </p>
+                <button class="phone-btn" id="heroOrderBtn" style="font-size: 1.2rem; padding: 1rem 2.5rem;">
+                    <i class="fas fa-wrench"></i>
+                    ЗАПИСАТЬСЯ НА РЕМОНТ
+                </button>
+                <div class="hero-features">
+                    <div class="feature">
+                        <i class="fas fa-bolt"></i>
+                        <span>Ремонт от 30 минут</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Гарантия 2 года</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-tools"></i>
+                        <span>Оригинальные запчасти</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Бренды - БОЛЬШИЕ иконки, кроме Sony и Asus -->
+    <section class="brands">
+        <div class="container">
+            <h2 class="brands-title">РАБОТАЕМ СО ВСЕМИ БРЕНДАМИ</h2>
+            <p class="brands-subtitle">Оригинальные запчасти и сертифицированный ремонт</p>
+            
+            <div class="brands-grid">
+                <!-- 1 ряд -->
+                <div class="brand-item samsung">
+                    <!-- Samsung большой -->
+                    <img src="https://i.ibb.co/zh35LWRw/1691604298samsung-logo-transparent.png" alt="Samsung">
+                </div>
+                <div class="brand-item apple">
+                    <!-- Apple большой -->
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/800px-Apple_logo_black.svg.png" alt="Apple">
+                </div>
+                <div class="brand-item xiaomi">
+                    <!-- Xiaomi большой -->
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Xiaomi_logo.svg/800px-Xiaomi_logo.svg.png" alt="Xiaomi">
+                </div>
+                <div class="brand-item huawei">
+                    <!-- Huawei большой -->
+                    <img src="https://i.ibb.co/mrrSYzsx/2019-07-22-T125740-Z-1-LYNXNPEF6-L11-T-RTROPTP-4-HUAWEI-TECH-CHILE-e1563804556600.png" alt="Huawei">
+                </div>
+                
+                <!-- 2 ряд -->
+                <div class="brand-item lenovo">
+                    <!-- Lenovo большой -->
+                    <img src="https://i.ibb.co/ZpR7pTSC/imgbin-77eb101689701aa35c2b0e33a5849bd9.png" alt="Lenovo">
+                </div>
+                <div class="brand-item asus">
+                    <!-- Asus маленький -->
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/ASUS_Logo.svg/800px-ASUS_Logo.svg.png" alt="Asus">
+                </div>
+                <div class="brand-item hp">
+                    <!-- HP большой -->
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/HP_logo_2012.svg/800px-HP_logo_2012.svg.png" alt="HP">
+                </div>
+                <div class="brand-item sony">
+                    <!-- Sony маленький -->
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Sony_logo.svg/800px-Sony_logo.svg.png" alt="Sony">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Услуги -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">НАШИ УСЛУГИ</h2>
+            <p class="section-subtitle">Ремонтируем все виды техники с гарантией качества</p>
+            
+            <div class="services-grid">
+                <!-- Телефоны -->
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://i.ibb.co/MxkvXTZk/image.png');"></div>
+                    <div class="service-content">
+                        <h3>Смартфоны и планшеты</h3>
+                        <p>Все бренды: от Apple до Xiaomi. Срочный ремонт за 1 час.</p>
+                        <ul class="service-list">
+                            <li>Замена дисплея <span class="price">от 1 500 ₽</span></li>
+                            <li>Замена аккумулятора <span class="price">от 1 800 ₽</span></li>
+                            <li>Ремонт после воды <span class="price">от 2 500 ₽</span></li>
+                            <li>Восстановление данных <span class="price">от 3 000 ₽</span></li>
+                        </ul>
+                        <button class="service-btn" data-service="Смартфоны и планшеты">
+                            <i class="fas fa-phone"></i>
+                            Записаться
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Ноутбуки -->
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://i.ibb.co/spqxrnQJ/image.png');"></div>
+                    <div class="service-content">
+                        <h3>Ноутбуки и компьютеры</h3>
+                        <p>Чистка, ремонт плат, замена комплектующих.</p>
+                        <ul class="service-list">
+                            <li>Диагностика <span class="price">бесплатно</span></li>
+                            <li>Чистка + термопаста <span class="price">от 2 000 ₽</span></li>
+                            <li>Ремонт материнской платы <span class="price">от 3 500 ₽</span></li>
+                            <li>Замена матрицы <span class="price">от 4 500 ₽</span></li>
+                            <li>Установка SSD <span class="price">от 1 500 ₽</span></li>
+                        </ul>
+                        <button class="service-btn" data-service="Ноутбуки и компьютеры">
+                            <i class="fas fa-phone"></i>
+                            Записаться
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Игровые системы -->
+                <div class="service-card">
+                    <div class="service-image" style="background-image: url('https://i.ibb.co/JwVjDVwh/image.png');"></div>
+                    <div class="service-content">
+                        <h3>Игровые консоли</h3>
+                        <p>PlayStation, Xbox, Nintendo Switch, игровые ПК.</p>
+                        <ul class="service-list">
+                            <li>Чистка от пыли <span class="price">от 2 500 ₽</span></li>
+                            <li>Замена термопасты <span class="price">от 2 000 ₽</span></li>
+                            <li>Ремонт блока питания <span class="price">от 3 000 ₽</span></li>
+                            <li>Апгрейд игровых ПК <span class="price">от 5 000 ₽</span></li>
+                        </ul>
+                        <button class="service-btn" data-service="Игровые консоли">
+                            <i class="fas fa-phone"></i>
+                            Записаться
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Почему выбирают нас -->
+    <section class="advantages" id="advantages">
+        <div class="container">
+            <h2 class="section-title">ПОЧЕМУ ВЫБИРАЮТ НАС</h2>
+            <p class="section-subtitle">Более 3 850 довольных клиентов в Златоусте</p>
+            
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Срочный ремонт</h3>
+                    <p>Многие поломки устраняем за 30-60 минут. Работаем без выходных.</p>
+                </div>
+                
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Гарантия 2 года</h3>
+                    <p>Самая длительная гарантия в городе. Бесплатно исправим, если что-то случится.</p>
+                </div>
+                
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Оригинальные запчасти</h3>
+                    <p>Работаем только с сертифицированными комплектующими от производителей.</p>
+                </div>
+                
+                <div class="advantage-card">
+                    <div class="advantage-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3>Опытные мастера</h3>
+                    <p>Специалисты с опытом от 5 лет. Решаем даже самые сложные случаи.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Частые проблемы - ТЕПЕРЬ КЛИКАБЕЛЬНЫЕ -->
+    <section class="problems">
+        <div class="container">
+            <h2 class="section-title">ЧАСТЫЕ ПРОБЛЕМЫ</h2>
+            <p class="section-subtitle">Нажмите на проблему, чтобы увидеть подробное решение</p>
+            
+            <div class="problems-grid">
+                <div class="problem-card" data-problem="phone_not_turning_on">
+                    <h4>Телефон не включается</h4>
+                    <p>После падения или попадания воды. Восстанавливаем работу в 90% случаев.</p>
+                    <span class="problem-more">Нажмите для подробностей →</span>
+                </div>
+                
+                <div class="problem-card" data-problem="laptop_overheating">
+                    <h4>Ноутбук перегревается и выключается</h4>
+                    <p>Сильно шумит, тормозит при нагрузке. Чистка системы охлаждения и замена термопасты решает проблему.</p>
+                    <span class="problem-more">Нажмите для подробностей →</span>
+                </div>
+                
+                <div class="problem-card" data-problem="broken_screen">
+                    <h4>Разбит экран или стекло</h4>
+                    <p>Замена стекла или дисплея. Используем оригинальные или качественные аналоги.</p>
+                    <span class="problem-more">Нажмите для подробностей →</span>
+                </div>
+                
+                <div class="problem-card" data-problem="charging_issue">
+                    <h4>Не работает зарядка</h4>
+                    <p>Телефон/ноутбук не заряжается или быстро разряжается.</p>
+                    <span class="problem-more">Нажмите для подробностей →</span>
+                </div>
+                
+                <div class="problem-card" data-problem="console_not_starting">
+                    <h4>Консоль не запускается</h4>
+                    <p>PlayStation/Xbox мигает и выключается. Чиним блоки питания и системы.</p>
+                    <span class="problem-more">Нажмите для подробностей →</span>
+                </div>
+                
+                <div class="problem-card" data-problem="data_loss">
+                    <h4>Потеря данных после поломки</h4>
+                    <p>Восстанавливаем фото, документы с жёстких дисков и телефонов.</p>
+                    <span class="problem-more">Нажмите для подробностей →</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section class="contacts" id="contacts">
+        <div class="container">
+            <h2 class="section-title">КОНТАКТЫ</h2>
+            <p class="section-subtitle">Приезжайте к нам или вызывайте мастера на дом</p>
+            
+            <div class="contacts-grid">
+                <div class="contact-info">
+                    <h3>Сервисный центр</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Адрес</h4>
+                            <!-- ОБНОВЛЕННЫЙ АДРЕС -->
+                            <p>ул. Виктора Геппа, 23<br>Златоуст, Челябинская область</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>Время работы</h4>
+                            <p>Пн-Вс: 9:00 - 21:00<br>Без перерывов и выходных</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Телефоны</h4>
+                            <p>+7 (3513) 60-77-77<br>+7 (951) 777-07-07 (WhatsApp)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <!-- ОБНОВЛЕННЫЕ КООРДИНАТЫ: 55.169961, 59.662068 -->
+                    <iframe src="https://yandex.ru/map-widget/v1/?ll=59.662068%2C55.169961&z=17&pt=59.662068,55.169961,pm2vvm" class="map" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-logo">
+                        <div class="logo-badge">ТЦ</div>
+                        ТЕХНОЦЕНТР
+                    </div>
+                    <p class="footer-about">
+                        Ремонт любой техники в Златоусте. Работаем с 2019 года. 
+                        Оригинальные запчасти, гарантия 2 года, срочный ремонт от 30 минут.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4>Услуги</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services">Ремонт телефонов</a></li>
+                        <li><a href="#services">Ремонт ноутбуков</a></li>
+                        <li><a href="#services">Игровые консоли</a></li>
+                        <li><a href="#services">Восстановление данных</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4>Контакты</h4>
+                    <ul class="footer-links">
+                        <li><a href="#contacts">Адрес</a></li>
+                        <li><a href="tel:+73513607777">Телефон</a></li>
+                        <li><a id="footerOrderBtn">Оставить заявку</a></li>
+                        <li><a id="footerPricesBtn">Цены</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="text-align: center; padding-top: 3rem; border-top: 1px solid #333; color: #666; font-size: 0.9rem;">
+                © 2025 ТЕХНОЦЕНТР Златоуст. Все права защищены.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Данные для модального окна проблем
+        const problemsData = {
+            'phone_not_turning_on': {
+                title: 'Телефон не включается',
+                subtitle: 'Решение для случаев, когда телефон не реагирует на кнопку питания',
+                causes: [
+                    'Разряженный или неисправный аккумулятор',
+                    'Повреждение после падения (отходит шлейф, треснула плата)',
+                    'Попадание влаги (коррозия контактов, короткое замыкание)',
+                    'Неисправность кнопки питания',
+                    'Проблемы с прошивкой (зависание при загрузке)'
+                ],
+                solution: [
+                    'Бесплатная диагностика для точного определения причины',
+                    'Чистка от коррозии после попадания воды (ультразвуковая ванна)',
+                    'Замена аккумулятора на оригинальный',
+                    'Ремонт или замена кнопки питания',
+                    'Перепрошивка устройства с сохранением данных',
+                    'Микросхемный ремонт материнской платы при необходимости'
+                ],
+                timeCost: [
+                    'Диагностика: 15 минут (бесплатно)',
+                    'Средний срок ремонта: 1-3 часа',
+                    'Стоимость: от 1 500 ₽ (замена аккумулятора) до 4 500 ₽ (ремонт платы)',
+                    'Гарантия на работу: 2 года'
+                ]
+            },
+            'laptop_overheating': {
+                title: 'Ноутбук перегревается и выключается',
+                subtitle: 'Решение проблем с перегревом и автоматическим выключением',
+                causes: [
+                    'Запыленность системы охлаждения (радиатор, вентиляторы)',
+                    'Высохшая термопаста на процессоре и видеокарте',
+                    'Неисправность вентилятора охлаждения',
+                    'Неправильная эксплуатация (на мягких поверхностях)',
+                    'Высокая нагрузка при недостаточном охлаждении'
+                ],
+                solution: [
+                    'Полная разборка и чистка системы охлаждения',
+                    'Замена термопасты на качественную (Arctic MX-4, Thermal Grizzly)',
+                    'Диагностика и замена вентиляторов при необходимости',
+                    'Оптимизация системы охлаждения (дополнительные термопрокладки)',
+                    'Настройка BIOS/UEFI для оптимальной работы вентиляторов',
+                    'Чистка от пыли без разборки (при легком загрязнении)'
+                ],
+                timeCost: [
+                    'Диагностика: 15 минут (бесплатно)',
+                    'Чистка + замена термопасты: 1,5-2 часа',
+                    'Стоимость: от 2 000 ₽ (чистка) до 4 000 ₽ (с заменой вентиляторов)',
+                    'Гарантия на работу: 2 года'
+                ]
+            },
+            'broken_screen': {
+                title: 'Разбит экран или стекло',
+                subtitle: 'Замена дисплея и защитного стекла',
+                causes: [
+                    'Падение устройства на твердую поверхность',
+                    'Сильное давление на экран',
+                    'Попадание устройства под тяжелый предмет',
+                    'Производственный брак (редко)',
+                    'Температурные перепады'
+                ],
+                solution: [
+                    'Диагностика для определения повреждений (только стекло или весь дисплей)',
+                    'Замена защитного стекла (если сенсор работает)',
+                    'Замена дисплейного модуля (оригинальный или качественный аналог)',
+                    'Калибровка сенсора после замены',
+                    'Проверка всех функций (камера, датчики, сенсор)',
+                    'Установка защитного стекла в подарок'
+                ],
+                timeCost: [
+                    'Диагностика: 10 минут (бесплатно)',
+                    'Замена стекла: 30-60 минут',
+                    'Замена дисплея: 1-2 часа',
+                    'Стоимость: от 1 500 ₽ (стекло) до 15 000 ₽ (оригинальный дисплей iPhone)',
+                    'Гарантия на запчасти: 2 года'
+                ]
+            },
+            'charging_issue': {
+                title: 'Не работает зарядка',
+                subtitle: 'Решение проблем с зарядкой устройств',
+                causes: [
+                    'Неисправность разъема зарядки (расшатан, окислен)',
+                    'Повреждение контроллера заряда на плате',
+                    'Проблемы с аккумулятором (вздутие, износ)',
+                    'Неисправность кабеля или блока питания',
+                    'Программные ошибки (слетела калибровка аккумулятора)'
+                ],
+                solution: [
+                    'Диагностика разъема и контроллера заряда',
+                    'Чистка или замена разъема зарядки',
+                    'Ремонт контроллера заряда (микросхемный ремонт)',
+                    'Замена аккумулятора при износе более 80%',
+                    'Программная калибровка аккумулятора',
+                    'Проверка и рекомендации по зарядным устройствам'
+                ],
+                timeCost: [
+                    'Диагностика: 15 минут (бесплатно)',
+                    'Чистка разъема: 20-30 минут',
+                    'Замена разъема: 1-1,5 часа',
+                    'Ремонт контроллера: 2-3 часа',
+                    'Стоимость: от 800 ₽ (чистка) до 3 500 ₽ (ремонт контроллера)',
+                    'Гарантия на работу: 2 года'
+                ]
+            },
+            'console_not_starting': {
+                title: 'Консоль не запускается',
+                subtitle: 'Ремонт игровых консолей (PlayStation, Xbox, Nintendo Switch)',
+                causes: [
+                    'Проблемы с блоком питания (неисправность, перегрев)',
+                    'Перегрев и выход из строя чипов (желтый свет смерти PS3, красное кольцо Xbox)',
+                    'Попадание пыли и перегрев системы',
+                    'Проблемы с жестким диском',
+                    'Программные ошибки (слетевшая прошивка)'
+                ],
+                solution: [
+                    'Диагностика блока питания и материнской платы',
+                    'Полная разборка и чистка от пыли',
+                    'Замена термопасты и термопрокладок',
+                    'Ремонт или замена блока питания',
+                    'Реболлинг чипов при необходимости (пайка BGA)',
+                    'Восстановление прошивки и сохранений'
+                ],
+                timeCost: [
+                    'Диагностика: 30 минут (бесплатно)',
+                    'Чистка + термопаста: 2-3 часа',
+                    'Ремонт блока питания: 1-2 дня',
+                    'Стоимость: от 2 500 ₽ (чистка) до 8 000 ₽ (реболлинг чипов)',
+                    'Гарантия на работу: 2 года'
+                ]
+            },
+            'data_loss': {
+                title: 'Потеря данных после поломки',
+                subtitle: 'Восстановление данных с поврежденных устройств',
+                causes: [
+                    'Физическое повреждение жесткого диска/SSD',
+                    'Логические ошибки файловой системы',
+                    'Повреждение после падения или попадания воды',
+                    'Удаление файлов по ошибке',
+                    'Вирусное заражение или шифрование'
+                ],
+                solution: [
+                    'Диагностика носителя на специальном оборудовании',
+                    'Восстановление логической структуры диска',
+                    'Чистка контактов и ремонт контроллера (при физических повреждениях)',
+                    'Создание посекторной копии поврежденного диска',
+                    'Восстановление файлов по сигнатурам',
+                    'Предоставление восстановленных данных на новом носителе'
+                ],
+                timeCost: [
+                    'Первичная диагностика: 30 минут (бесплатно)',
+                    'Восстановление логических ошибок: 2-6 часов',
+                    'Сложное восстановление: 1-3 дня',
+                    'Стоимость: от 3 000 ₽ (логическое восстановление) до 15 000 ₽ (физический ремонт)',
+                    'Оплата только при успешном восстановлении'
+                ]
+            }
+        };
+
+        // Мобильное меню
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            // Анимация бургер-меню
+            const spans = menuToggle.querySelectorAll('span');
+            if (navLinks.classList.contains('active')) {
+                spans[0].style.transform = 'rotate(45deg) translate(8px, 8px)';
+                spans[1].style.opacity = '0';
+                spans[2].style.transform = 'rotate(-45deg) translate(7px, -7px)';
+            } else {
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            }
+        });
+        
+        // Закрытие меню при клике на ссылку
+        document.querySelectorAll('.nav-links a, .nav-links button').forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const spans = menuToggle.querySelectorAll('span');
+                spans[0].style.transform = 'none';
+                spans[1].style.opacity = '1';
+                spans[2].style.transform = 'none';
+            });
+        });
+        
+        // Элементы модальных окон
+        const pricesModal = document.getElementById('pricesModal');
+        const orderModal = document.getElementById('orderModal');
+        const problemModal = document.getElementById('problemModal');
+        const showPricesBtn = document.getElementById('showPricesBtn');
+        const showOrderBtn = document.getElementById('showOrderBtn');
+        const heroOrderBtn = document.getElementById('heroOrderBtn');
+        const orderFromPrices = document.getElementById('orderFromPrices');
+        const orderFromProblem = document.getElementById('orderFromProblem');
+        const footerOrderBtn = document.getElementById('footerOrderBtn');
+        const footerPricesBtn = document.getElementById('footerPricesBtn');
+        const closePrices = document.getElementById('closePrices');
+        const closeOrder = document.getElementById('closeOrder');
+        const closeProblem = document.getElementById('closeProblem');
+        
+        // Показ модального окна цен
+        showPricesBtn.addEventListener('click', () => {
+            pricesModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+        footerPricesBtn.addEventListener('click', () => {
+            pricesModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+        
+        // Показ модального окна заявки
+        showOrderBtn.addEventListener('click', () => {
+            orderModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+        heroOrderBtn.addEventListener('click', () => {
+            orderModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+        orderFromPrices.addEventListener('click', () => {
+            pricesModal.style.display = 'none';
+            orderModal.style.display = 'flex';
+        });
+        orderFromProblem.addEventListener('click', () => {
+            problemModal.style.display = 'none';
+            orderModal.style.display = 'flex';
+        });
+        footerOrderBtn.addEventListener('click', () => {
+            orderModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+        
+        // Клики по карточкам проблем
+        document.querySelectorAll('.problem-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const problemId = this.getAttribute('data-problem');
+                const problemData = problemsData[problemId];
+                
+                if (problemData) {
+                    // Заполняем модальное окно
+                    document.getElementById('problemModalTitle').textContent = problemData.title;
+                    document.getElementById('problemModalSubtitle').textContent = problemData.subtitle;
+                    
+                    // Причины
+                    const causesContainer = document.getElementById('problemCauses');
+                    causesContainer.innerHTML = '';
+                    problemData.causes.forEach(cause => {
+                        const div = document.createElement('div');
+                        div.className = 'price-item';
+                        div.innerHTML = `<span>${cause}</span>`;
+                        causesContainer.appendChild(div);
+                    });
+                    
+                    // Решение
+                    const solutionContainer = document.getElementById('problemSolution');
+                    solutionContainer.innerHTML = '';
+                    problemData.solution.forEach(solution => {
+                        const div = document.createElement('div');
+                        div.className = 'price-item';
+                        div.innerHTML = `<span>${solution}</span>`;
+                        solutionContainer.appendChild(div);
+                    });
+                    
+                    // Сроки и стоимость
+                    const timeCostContainer = document.getElementById('problemTimeCost');
+                    timeCostContainer.innerHTML = '';
+                    problemData.timeCost.forEach(item => {
+                        const div = document.createElement('div');
+                        div.className = 'price-item';
+                        div.innerHTML = `<span>${item}</span>`;
+                        timeCostContainer.appendChild(div);
+                    });
+                    
+                    // Показываем модальное окно
+                    problemModal.style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+        
+        // Закрытие модальных окон
+        const closeModal = (modal) => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        };
+        
+        closePrices.addEventListener('click', () => closeModal(pricesModal));
+        closeOrder.addEventListener('click', () => closeModal(orderModal));
+        closeProblem.addEventListener('click', () => closeModal(problemModal));
+        
+        // Закрытие при клике вне окна
+        window.addEventListener('click', (e) => {
+            if (e.target === pricesModal) closeModal(pricesModal);
+            if (e.target === orderModal) closeModal(orderModal);
+            if (e.target === problemModal) closeModal(problemModal);
+        });
+        
+        // Закрытие по Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal(pricesModal);
+                closeModal(orderModal);
+                closeModal(problemModal);
+            }
+        });
+        
+        // Обработка кнопок "Записаться" в карточках услуг
+        document.querySelectorAll('.service-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const service = this.getAttribute('data-service');
+                document.getElementById('orderDevice').value = service;
+                orderModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        // Отправка формы заявки
+        document.getElementById('repairForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('orderName').value;
+            const phone = document.getElementById('orderPhone').value;
+            const device = document.getElementById('orderDevice').value;
+            const problem = document.getElementById('orderProblem').value;
+            
+            // Показываем пользователю подтверждение
+            alert(`✅ Заявка отправлена!\n\nИмя: ${name}\nТелефон: ${phone}\nУстройство: ${device}\n\nМы перезвоним в течение 5 минут.`);
+            
+            // Отправка в Telegram (раскомментировать для работы)
+            // const telegramBotToken = 'ВАШ_ТОКЕН_БОТА';
+            // const chatId = 'ВАШ_CHAT_ID';
+            // const message = `🎯 НОВАЯ ЗАЯВКА НА РЕМОНТ\n\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n📱 Устройство: ${device}\n🔧 Проблема: ${problem}\n📍 Город: Златоуст`;
+            // 
+            // fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify({ 
+            //         chat_id: chatId, 
+            //         text: message,
+            //         parse_mode: 'HTML'
+            //     })
+            // });
+            
+            // Очистка формы и закрытие окна
+            this.reset();
+            closeModal(orderModal);
+        });
+        
+        // Плавная прокрутка
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
