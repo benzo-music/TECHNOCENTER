@@ -604,11 +604,521 @@
             transition: 0.3s;
         }
         
+        /* НОВЫЕ СЕКЦИИ - НАЧАЛО */
+        
+        /* 1. Уникальные услуги */
+        .unique-services {
+            padding: 80px 0;
+            background: var(--dark);
+        }
+        .unique-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .unique-card {
+            background: #1A1A1A;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #333;
+            transition: all 0.3s;
+        }
+        .unique-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+        .unique-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+        .unique-card h3 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        .unique-card p {
+            color: #999;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+        }
+        .unique-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .unique-card li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #333;
+            color: #CCCCCC;
+        }
+        .unique-card li:last-child {
+            border-bottom: none;
+        }
+        
+        /* 2. Этапы работы - ИСПРАВЛЕНО: заголовки оранжевые */
+        .work-steps {
+            padding: 80px 0;
+            background: var(--gray);
+        }
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .step-card {
+            background: #1A1A1A;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid var(--primary);
+            position: relative;
+        }
+        .step-number {
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.2rem;
+        }
+        .step-card h3 {
+            color: var(--primary); /* Оранжевый цвет заголовков */
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        .step-card p {
+            color: #CCCCCC;
+            line-height: 1.6;
+        }
+        
+        /* 3. Срочный ремонт за 1 час - ИСПРАВЛЕНО: только кнопка оранжевая */
+        .urgent-repair {
+            padding: 80px 0;
+            background: var(--dark);
+        }
+        .urgent-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .urgent-item {
+            background: #1A1A1A;
+            padding: 1.8rem;
+            border-radius: 12px;
+        }
+        .urgent-item h3 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .urgent-item ul {
+            list-style: none;
+        }
+        .urgent-item li {
+            padding: 0.7rem 0;
+            border-bottom: 1px solid #333;
+            display: flex;
+            justify-content: space-between;
+            color: #CCCCCC;
+        }
+        .urgent-item li:last-child {
+            border-bottom: none;
+        }
+        .urgent-call {
+            background: #1A1A1A;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 3rem;
+            border: 1px solid #333;
+        }
+        .urgent-call h3 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        .urgent-call p {
+            color: #CCCCCC;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        /* 4. Сложные случаи */
+        .complex-cases {
+            padding: 80px 0;
+            background: var(--gray);
+        }
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .case-card {
+            background: #1A1A1A;
+            padding: 1.8rem;
+            border-radius: 12px;
+            border: 1px solid #333;
+            position: relative;
+        }
+        .case-badge {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        .case-card h3 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        .case-card p {
+            color: #999;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        .case-tech {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        .tech-tag {
+            background: rgba(255, 107, 0, 0.2);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        /* 5. Отзывы - ИСПРАВЛЕНО: только мужские отзывы */
+        .reviews {
+            padding: 80px 0;
+            background: var(--dark);
+        }
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .review-card {
+            background: #1A1A1A;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #333;
+        }
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        .reviewer {
+            font-weight: 700;
+            color: white;
+        }
+        .review-date {
+            color: #999;
+            font-size: 0.9rem;
+        }
+        .review-stars {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        .review-card p {
+            color: #CCCCCC;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .review-device {
+            color: #999;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+        .more-reviews {
+            text-align: center;
+            margin-top: 3rem;
+        }
+        .more-reviews p {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+        
+        /* 6. Вопросы и ответы (FAQ) */
+        .faq {
+            padding: 80px 0;
+            background: var(--gray);
+        }
+        .faq-grid {
+            max-width: 800px;
+            margin: 3rem auto 0;
+        }
+        .faq-item {
+            background: #1A1A1A;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+        .faq-question {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+        .faq-question h3 {
+            font-size: 1.2rem;
+            color: white;
+        }
+        .faq-question i {
+            color: var(--primary);
+            transition: transform 0.3s;
+        }
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 500px;
+        }
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        /* 7. География обслуживания - ИСПРАВЛЕНО: с картой */
+        .coverage {
+            padding: 80px 0;
+            background: var(--dark);
+        }
+        .coverage-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+            align-items: center;
+        }
+        .coverage-map {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            background: #1A1A1A;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+        .map-point {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            background: var(--primary);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.3);
+            z-index: 2;
+        }
+        .map-point:hover {
+            transform: scale(1.3);
+            box-shadow: 0 0 0 5px rgba(255, 107, 0, 0.5);
+        }
+        .map-point::after {
+            content: attr(data-district);
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            white-space: nowrap;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+            z-index: 3;
+        }
+        .map-point:hover::after {
+            opacity: 1;
+        }
+        /* Позиции точек на карте */
+        .map-point[data-district="Центр"] { top: 35%; left: 40%; }
+        .map-point[data-district="Машзавод"] { top: 55%; left: 65%; }
+        .map-point[data-district="Гагарина"] { top: 45%; left: 30%; }
+        .map-point[data-district="Железнодорожный"] { top: 70%; left: 50%; }
+        .map-point[data-district="Строителей"] { top: 30%; left: 75%; }
+        
+        .coverage-list {
+            background: #1A1A1A;
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid #333;
+        }
+        .coverage-list h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+        .coverage-list ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        .coverage-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #333;
+            color: #CCCCCC;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .coverage-list li:last-child {
+            border-bottom: none;
+        }
+        .coverage-list li i {
+            color: #4CAF50;
+        }
+        
+        /* 8. Акции и скидки - ИСПРАВЛЕНО: без промокода */
+        .promotions {
+            padding: 80px 0;
+            background: var(--gray);
+        }
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        .promo-card {
+            background: #1A1A1A;
+            padding: 1.8rem;
+            border-radius: 12px;
+            border: 1px solid #333;
+            position: relative;
+            text-align: center;
+        }
+        .promo-card.promo-hot {
+            border-color: var(--primary);
+        }
+        .promo-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        .promo-card.promo-hot .promo-badge {
+            background: var(--primary);
+        }
+        .promo-card h3 {
+            color: white;
+            margin: 1.5rem 0 0.8rem;
+            font-size: 1.3rem;
+        }
+        .promo-card p {
+            color: #999;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        .promo-date {
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+        .promo-note {
+            text-align: center;
+            color: #999;
+            margin-top: 2rem;
+            font-size: 0.9rem;
+        }
+        
+        /* 9. Статистика - ИСПРАВЛЕНО: реальные цифры */
+        .stats {
+            padding: 60px 0;
+            background: var(--primary);
+            color: white;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+        }
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* WhatsApp кнопка */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+        }
+        
+        /* НОВЫЕ СЕКЦИИ - КОНЕЦ */
+        
         /* Адаптив */
         @media (max-width: 992px) {
             .contacts-grid { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
             .brands-grid { grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+            .coverage-content { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
             .menu-toggle { display: flex; }
@@ -654,6 +1164,24 @@
             .problems-grid {
                 grid-template-columns: 1fr;
             }
+            .promo-grid {
+                grid-template-columns: 1fr;
+            }
+            .urgent-grid {
+                grid-template-columns: 1fr;
+            }
+            .cases-grid {
+                grid-template-columns: 1fr;
+            }
+            .reviews-grid {
+                grid-template-columns: 1fr;
+            }
+            .unique-grid {
+                grid-template-columns: 1fr;
+            }
+            .coverage-map {
+                height: 300px;
+            }
         }
         @media (max-width: 480px) {
             .hero h1 { font-size: 1.8rem; }
@@ -664,6 +1192,15 @@
             .section-title { font-size: 1.8rem; }
             .advantages-grid { grid-template-columns: 1fr; }
             .brands-grid { grid-template-columns: repeat(2, 1fr); }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            .coverage-map {
+                height: 250px;
+            }
         }
     </style>
 </head>
@@ -771,7 +1308,7 @@
         </div>
     </div>
 
-    <!-- Модальное окно заявки -->
+    <!-- Модальное окно заявки - ИСПРАВЛЕНО: умная форма с моделями -->
     <div class="modal" id="orderModal">
         <div class="modal-content">
             <span class="close-modal" id="closeOrder">&times;</span>
@@ -787,20 +1324,36 @@
                     <label for="orderPhone">Телефон *</label>
                     <input type="tel" id="orderPhone" placeholder="+7 (900) 123-45-67" required>
                 </div>
+                
                 <div class="form-group">
-                    <label for="orderDevice">Что ремонтируем?</label>
-                    <select id="orderDevice">
-                        <option>Телефон</option>
-                        <option>Ноутбук</option>
-                        <option>Планшет</option>
-                        <option>Игровая консоль</option>
-                        <option>Другое</option>
+                    <label for="orderDeviceType">Тип устройства *</label>
+                    <select id="orderDeviceType" required>
+                        <option value="">Выберите тип</option>
+                        <option value="phone">Смартфон</option>
+                        <option value="laptop">Ноутбук</option>
+                        <option value="tablet">Планшет</option>
+                        <option value="console">Игровая консоль</option>
+                        <option value="other">Другое</option>
                     </select>
                 </div>
+                
+                <div class="form-group" id="brandContainer" style="display: none;">
+                    <label for="orderBrand">Бренд *</label>
+                    <select id="orderBrand">
+                        <!-- Заполняется динамически -->
+                    </select>
+                </div>
+                
+                <div class="form-group" id="modelContainer" style="display: none;">
+                    <label for="orderModel">Модель (если знаете)</label>
+                    <input type="text" id="orderModel" placeholder="Например: iPhone 13, Samsung Galaxy S21">
+                </div>
+                
                 <div class="form-group">
                     <label for="orderProblem">Опишите проблему</label>
                     <textarea id="orderProblem" rows="3" placeholder="Например: разбит экран, не включается..."></textarea>
                 </div>
+                
                 <button type="submit" class="submit-btn">
                     <i class="fas fa-paper-plane"></i>
                     ОТПРАВИТЬ ЗАЯВКУ
@@ -809,7 +1362,7 @@
         </div>
     </div>
 
-    <!-- Модальное окно проблемы -->
+    <!-- Модальное окно проблемы - ИСПРАВЛЕНО: гарантия 2 года везде -->
     <div class="modal" id="problemModal">
         <div class="modal-content">
             <span class="close-modal" id="closeProblem">&times;</span>
@@ -985,11 +1538,91 @@
         </div>
     </section>
 
+    <!-- Уникальные услуги - ИСПРАВЛЕНО: убрана "Конфиденциальный ремонт" -->
+    <section class="unique-services">
+        <div class="container">
+            <h2 class="section-title">УНИКАЛЬНЫЕ УСЛУГИ</h2>
+            <p class="section-subtitle">То, что не делают в других сервисах Златоуста</p>
+            
+            <div class="unique-grid">
+                <div class="unique-card">
+                    <div class="unique-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>Ремонт при клиенте</h3>
+                    <p>Можете присутствовать при ремонте за специальным окном. Видите все этапы работы.</p>
+                    <ul>
+                        <li>Прозрачный процесс</li>
+                        <li>Обучение правильной эксплуатации</li>
+                        <li>Ответы на вопросы мастера</li>
+                    </ul>
+                </div>
+                
+                <div class="unique-card">
+                    <div class="unique-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3>Выездной ремонт</h3>
+                    <p>Мастер приедет к вам домой или в офис. Бесплатный выезд по Златоусту.</p>
+                    <ul>
+                        <li>Ремонт на дому от 30 минут</li>
+                        <li>Диагностика на месте</li>
+                        <li>Все запчасти с собой</li>
+                    </ul>
+                </div>
+                
+                <div class="unique-card">
+                    <div class="unique-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3>Трейд-ин техники</h3>
+                    <p>Сдайте старую технику и получите скидку на ремонт новой. Даже неработающие устройства.</p>
+                    <ul>
+                        <li>Оценка за 5 минут</li>
+                        <li>Скидка до 30%</li>
+                        <li>Утилизация старых устройств</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Этапы работы - ИСПРАВЛЕНО: заголовки оранжевые -->
+    <section class="work-steps">
+        <div class="container">
+            <h2 class="section-title">КАК МЫ РАБОТАЕМ</h2>
+            <p class="section-subtitle">Прозрачный процесс от заявки до готового устройства</p>
+            
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">01</div>
+                    <h3>Заявка или звонок</h3>
+                    <p>Оставляете заявку на сайте или звоните по телефону. Наш менеджер уточняет детали и записывает на удобное время.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">02</div>
+                    <h3>Бесплатная диагностика</h3>
+                    <p>Приносите технику в сервис. Мастер проводит полную диагностику в течение 15-30 минут и называет точную стоимость.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">03</div>
+                    <h3>Согласование и ремонт</h3>
+                    <p>Вы утверждаете стоимость и сроки. Начинаем ремонт сразу после вашего согласия. Используем только оригинальные запчасти.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">04</div>
+                    <h3>Проверка и гарантия</h3>
+                    <p>Проводим тестирование всех функций. Выдаем гарантию до 2 лет на работу и запчасти. Техника готова к использованию.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Почему выбирают нас -->
     <section class="advantages" id="advantages">
         <div class="container">
             <h2 class="section-title">ПОЧЕМУ ВЫБИРАЮТ НАС</h2>
-            <p class="section-subtitle">Более 3 850 довольных клиентов в Златоусте</p>
+            <p class="section-subtitle">Более 1850 довольных клиентов в Златоусте</p>
             
             <div class="advantages-grid">
                 <div class="advantage-card">
@@ -1027,7 +1660,119 @@
         </div>
     </section>
 
-    <!-- Частые проблемы - ТЕПЕРЬ КЛИКАБЕЛЬНЫЕ -->
+    <!-- Срочный ремонт за 1 час - ИСПРАВЛЕНО: только кнопка оранжевая -->
+    <section class="urgent-repair">
+        <div class="container">
+            <h2 class="section-title">РЕМОНТИРУЕМ ЗА 1 ЧАС</h2>
+            <p class="section-subtitle">Более 50 видов работ выполняем в вашем присутствии</p>
+            
+            <div class="urgent-grid">
+                <div class="urgent-item">
+                    <h3><i class="fas fa-mobile-alt"></i> Телефоны</h3>
+                    <ul>
+                        <li>Замена стекла — <strong>40 минут</strong></li>
+                        <li>Замена аккумулятора — <strong>25 минут</strong></li>
+                        <li>Замена разъема зарядки — <strong>30 минут</strong></li>
+                        <li>Чистка после воды — <strong>50 минут</strong></li>
+                    </ul>
+                </div>
+                <div class="urgent-item">
+                    <h3><i class="fas fa-laptop"></i> Ноутбуки</h3>
+                    <ul>
+                        <li>Замена клавиатуры — <strong>45 минут</strong></li>
+                        <li>Чистка от пыли — <strong>60 минут</strong></li>
+                        <li>Замена жесткого диска — <strong>20 минут</strong></li>
+                        <li>Установка Windows — <strong>40 минут</strong></li>
+                    </ul>
+                </div>
+                <div class="urgent-item">
+                    <h3><i class="fas fa-gamepad"></i> Консоли</h3>
+                    <ul>
+                        <li>Чистка PlayStation — <strong>50 минут</strong></li>
+                        <li>Замена термопасты — <strong>40 минут</strong></li>
+                        <li>Ремонт джойстиков — <strong>35 минут</strong></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="urgent-call">
+                <h3>Нужен срочный ремонт прямо сейчас?</h3>
+                <p>Приезжайте без записи — возьмем в работу сразу</p>
+                <button class="phone-btn" id="urgentBtn" style="padding: 1rem 2.5rem; font-size: 1.2rem;">
+                    <i class="fas fa-car"></i>
+                    ПРИЕХАТЬ СЕЙЧАС
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Отзывы - ИСПРАВЛЕНО: только мужские отзывы, уменьшены цифры -->
+    <section class="reviews">
+        <div class="container">
+            <h2 class="section-title">ОТЗЫВЫ КЛИЕНТОВ</h2>
+            <p class="section-subtitle">Более 1850 довольных клиентов в Златоусте</p>
+            
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer">Александр В.</div>
+                        <div class="review-date">15.11.2024</div>
+                    </div>
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Уронил iPhone в воду. Думал, все, конец. Принес в ТЕХНОЦЕНТР — почистили за 2 часа, телефон как новый работает. Цена адекватная, ребята молодцы!"</p>
+                    <div class="review-device">Устройство: iPhone 13 Pro</div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer">Дмитрий С.</div>
+                        <div class="review-date">02.11.2024</div>
+                    </div>
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"PS4 перестала включаться после 5 лет работы. Сделали полную чистку, заменили термопасту — консоль ожила. Работают профессионально, дали гарантию 2 года."</p>
+                    <div class="review-device">Устройство: PlayStation 4 Pro</div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer">Игорь М.</div>
+                        <div class="review-date">28.10.2024</div>
+                    </div>
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p>"Ноутбук ASUS перегревался и выключался. Почистили, заменили термопасту — теперь работает тихо и не греется. Цена ниже, чем в других сервисах, а качество на уровне."</p>
+                    <div class="review-device">Устройство: ASUS ROG Strix</div>
+                </div>
+            </div>
+            
+            <div class="more-reviews">
+                <p><strong>4.8/5</strong> средний рейтинг на основе 1850 отзывов</p>
+                <button class="service-btn" onclick="window.open('https://yandex.ru/maps/org/tekhnotsentr/1133956235/reviews/', '_blank')">
+                    <i class="fab fa-yandex"></i>
+                    Читать все отзывы на Яндекс.Картах
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Частые проблемы -->
     <section class="problems">
         <div class="container">
             <h2 class="section-title">ЧАСТЫЕ ПРОБЛЕМЫ</h2>
@@ -1069,6 +1814,211 @@
                     <p>Восстанавливаем фото, документы с жёстких дисков и телефонов.</p>
                     <span class="problem-more">Нажмите для подробностей →</span>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Сложные случаи - ИСПРАВЛЕНО: добавлены 2 новых кейса -->
+    <section class="complex-cases">
+        <div class="container">
+            <h2 class="section-title">СЛОЖНЫЕ СЛУЧАИ</h2>
+            <p class="section-subtitle">Решаем проблемы, от которых отказались в других сервисах</p>
+            
+            <div class="cases-grid">
+                <div class="case-card">
+                    <div class="case-badge">Сложность: Высокая</div>
+                    <h3>Восстановление данных после заводского сброса</h3>
+                    <p>Клиент случайно сделал factory reset на телефоне с 5 годами фотографий детей. Восстановили 98% данных.</p>
+                    <div class="case-tech">
+                        <span>Технологии:</span>
+                        <span class="tech-tag">JTAG</span>
+                        <span class="tech-tag">Chip-off</span>
+                    </div>
+                </div>
+                
+                <div class="case-card">
+                    <div class="case-badge">Сложность: Максимальная</div>
+                    <h3>Ремонт MacBook после залития кофе</h3>
+                    <p>Ноутбук полностью не включался. Заменили 12 элементов на материнской плате. Работает 2 года без проблем.</p>
+                    <div class="case-tech">
+                        <span>Технологии:</span>
+                        <span class="tech-tag">Микроскоп</span>
+                        <span class="tech-tag">BGA-пайка</span>
+                    </div>
+                </div>
+                
+                <div class="case-card">
+                    <div class="case-badge">Сложность: Средняя</div>
+                    <h3>Ремонт PlayStation 5 после скачка напряжения</h3>
+                    <p>Консоль сгорела во время грозы. Восстановили блок питания и материнскую плату. Сохранили все сохранения.</p>
+                    <div class="case-tech">
+                        <span>Технологии:</span>
+                        <span class="tech-tag">Схемотехника</span>
+                        <span class="tech-tag">Диагностика</span>
+                    </div>
+                </div>
+                
+                <div class="case-card">
+                    <div class="case-badge">Сложность: Высокая</div>
+                    <h3>Ремонт iPhone после падения с квадрокоптера</h3>
+                    <p>Телефон упал с 30 метров. Разбит дисплей, повреждена плата. Собрали "из щепок". Работает.</p>
+                    <div class="case-tech">
+                        <span>Технологии:</span>
+                        <span class="tech-tag">Ремонт плат</span>
+                        <span class="tech-tag">Донорские детали</span>
+                    </div>
+                </div>
+                
+                <!-- ДОБАВЛЕННЫЕ КЕЙСЫ -->
+                <div class="case-card">
+                    <div class="case-badge">Сложность: Максимальная</div>
+                    <h3>Ремонт ноутбука Dell после короткого замыкания</h3>
+                    <p>Клиент подключил неоригинальный блок питания. Сгорели 8 компонентов на материнской плате. Восстановили схему питания, заменили контроллеры.</p>
+                    <div class="case-tech">
+                        <span>Технологии:</span>
+                        <span class="tech-tag">Схемотехника</span>
+                        <span class="tech-tag">BGA-монтаж</span>
+                        <span class="tech-tag">Диагностика</span>
+                    </div>
+                </div>
+                
+                <div class="case-card">
+                    <div class="case-badge">Сложность: Высокая</div>
+                    <h3>Восстановление данных с флешки после форматирования</h3>
+                    <p>Клиент отформатировал флешку с дипломной работой за 2 дня до защиты. Восстановили все файлы с оригинальными именами и структурой папок.</p>
+                    <div class="case-tech">
+                        <span>Технологии:</span>
+                        <span class="tech-tag">Восстановление данных</span>
+                        <span class="tech-tag">Работа с NAND</span>
+                        <span class="tech-tag">Файловые системы</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Статистика - ИСПРАВЛЕНО: реалистичные цифры -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="1850">0</div>
+                    <div class="stat-label">Довольных клиентов</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="6">0</div>
+                    <div class="stat-label">Лет на рынке</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="4250">0</div>
+                    <div class="stat-label">Выполненных ремонтов</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="92">0</div>
+                    <div class="stat-label">Процент успешных ремонтов</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Вопросы и ответы (FAQ) -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">ВОПРОСЫ И ОТВЕТЫ</h2>
+            <p class="section-subtitle">Самые популярные вопросы наших клиентов</p>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Сколько стоит диагностика?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Диагностика у нас всегда бесплатна. Мы проводим полную проверку устройства в течение 15-30 минут и называем точную стоимость ремонта. Даже если вы откажетесь от ремонта — диагностику платить не нужно.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Используете ли вы оригинальные запчасти?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Да, мы работаем только с оригинальными и сертифицированными запчастями. Для iPhone используем комплектующие с кристаллической маркировкой, для Samsung — только оригинальные дисплеи AMOLED. Все запчасти имеют гарантию производителя.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Можно ли починить устройство в день обращения?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>В 85% случаев — да. Большинство ремонтов мы выполняем за 1-3 часа. Если нужна редкая запчасть, можем заказать ее с доставкой за 1-2 дня. При серьезных поломках называем точные сроки сразу после диагностики.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Что делать, если устройство на гарантии у производителя?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Мы рекомендуем сначала обратиться в авторизованный сервис производителя. Если гарантийный случай не признают или ремонт будет слишком долгим — приходите к нам. После нашего ремонта официальная гарантия производителя, к сожалению, аннулируется.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>Работаете ли вы с корпоративными клиентами?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Да, обслуживаем компании и организации. Предоставляем специальные условия: скидки от 15%, выездной ремонт, ежемесячная отчетность, договор на обслуживание. Оставьте заявку, и наш менеджер подготовит коммерческое предложение.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Акции и скидки - ИСПРАВЛЕНО: без промокода, 2026 год -->
+    <section class="promotions">
+        <div class="container">
+            <h2 class="section-title">АКЦИИ И СКИДКИ</h2>
+            <p class="section-subtitle">Действующие предложения декабря 2024</p>
+            
+            <div class="promo-grid">
+                <div class="promo-card promo-hot">
+                    <div class="promo-badge">ВЫГОДНО</div>
+                    <h3>Скидка 20% на первый ремонт</h3>
+                    <p>При первом обращении в наш сервис. Просто скажите, что узнали о нас с сайта.</p>
+                    <div class="promo-date">Действует до: 31.01.2026</div>
+                </div>
+                
+                <div class="promo-card">
+                    <div class="promo-badge">ПОСТОЯННАЯ</div>
+                    <h3>Бесплатная диагностика</h3>
+                    <p>Для всех клиентов. Даже если не будете ремонтировать.</p>
+                    <div class="promo-date">Без ограничений по времени</div>
+                </div>
+                
+                <div class="promo-card">
+                    <div class="promo-badge">СЕМЕЙНАЯ</div>
+                    <h3>Ремонт второго устройства -15%</h3>
+                    <p>При ремонте двух устройств от одной семьи</p>
+                    <div class="promo-date">Акция постоянная</div>
+                </div>
+                
+                <div class="promo-card">
+                    <div class="promo-badge">ПЕНСИОНЕРАМ</div>
+                    <h3>Скидка 10%</h3>
+                    <p>При предъявлении пенсионного удостоверения</p>
+                    <div class="promo-date">Постоянно</div>
+                </div>
+            </div>
+            
+            <div class="promo-note">
+                <p><i class="fas fa-exclamation-circle"></i> Скидки не суммируются. Применяется максимальная скидка.</p>
             </div>
         </div>
     </section>
@@ -1123,7 +2073,7 @@
         </div>
     </section>
 
-    <!-- Футер -->
+    <!-- Футер - ИСПРАВЛЕНО: 2025 год, с 2019 года -->
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
@@ -1165,8 +2115,13 @@
         </div>
     </footer>
 
+    <!-- WhatsApp кнопка -->
+    <a href="https://wa.me/79517770707" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <script>
-        // Данные для модального окна проблем
+        // Данные для модального окна проблем - ИСПРАВЛЕНО: гарантия 2 года везде
         const problemsData = {
             'phone_not_turning_on': {
                 title: 'Телефон не включается',
@@ -1232,7 +2187,7 @@
                     'Диагностика для определения повреждений (только стекло или весь дисплей)',
                     'Замена защитного стекла (если сенсор работает)',
                     'Замена дисплейного модуля (оригинальный или качественный аналог)',
-                    'Калибровка сенсора после замены',
+                    'Калибровка сенсора после заменя',
                     'Проверка всех функций (камера, датчики, сенсор)',
                     'Установка защитного стекла в подарок'
                 ],
@@ -1325,6 +2280,14 @@
             }
         };
 
+        // Данные для умной формы
+        const deviceBrands = {
+            'phone': ['Apple iPhone', 'Samsung Galaxy', 'Xiaomi', 'Huawei', 'Honor', 'Realme', 'OPPO', 'Vivo', 'Google Pixel', 'OnePlus', 'Nokia', 'Motorola', 'Sony Xperia'],
+            'laptop': ['Apple MacBook', 'Dell', 'HP', 'Lenovo', 'Asus', 'Acer', 'MSI', 'Microsoft Surface', 'Huawei MateBook', 'Xiaomi Mi Notebook', 'Samsung', 'Toshiba', 'Fujitsu'],
+            'tablet': ['Apple iPad', 'Samsung Galaxy Tab', 'Huawei MatePad', 'Lenovo Tab', 'Xiaomi Mi Pad', 'Microsoft Surface', 'Amazon Fire', 'Google Pixel Tablet'],
+            'console': ['PlayStation', 'Xbox', 'Nintendo Switch', 'Steam Deck', 'Игровой ПК', 'Ретро консоли']
+        };
+
         // Мобильное меню
         const menuToggle = document.getElementById('menuToggle');
         const navLinks = document.getElementById('navLinks');
@@ -1362,6 +2325,7 @@
         const showPricesBtn = document.getElementById('showPricesBtn');
         const showOrderBtn = document.getElementById('showOrderBtn');
         const heroOrderBtn = document.getElementById('heroOrderBtn');
+        const urgentBtn = document.getElementById('urgentBtn');
         const orderFromPrices = document.getElementById('orderFromPrices');
         const orderFromProblem = document.getElementById('orderFromProblem');
         const footerOrderBtn = document.getElementById('footerOrderBtn');
@@ -1369,6 +2333,44 @@
         const closePrices = document.getElementById('closePrices');
         const closeOrder = document.getElementById('closeOrder');
         const closeProblem = document.getElementById('closeProblem');
+        
+        // Умная форма: выбор типа устройства
+        const deviceTypeSelect = document.getElementById('orderDeviceType');
+        const brandContainer = document.getElementById('brandContainer');
+        const brandSelect = document.getElementById('orderBrand');
+        const modelContainer = document.getElementById('modelContainer');
+        
+        deviceTypeSelect.addEventListener('change', function() {
+            const selectedType = this.value;
+            
+            if (selectedType && deviceBrands[selectedType]) {
+                // Показываем контейнер бренда
+                brandContainer.style.display = 'block';
+                modelContainer.style.display = 'block';
+                
+                // Заполняем бренды
+                brandSelect.innerHTML = '<option value="">Выберите бренд</option>';
+                deviceBrands[selectedType].forEach(brand => {
+                    const option = document.createElement('option');
+                    option.value = brand;
+                    option.textContent = brand;
+                    brandSelect.appendChild(option);
+                });
+                
+                // Делаем обязательным
+                brandSelect.required = true;
+            } else if (selectedType === 'other') {
+                // Для "Другое" скрываем бренд и модель
+                brandContainer.style.display = 'none';
+                modelContainer.style.display = 'none';
+                brandSelect.required = false;
+            } else {
+                // Если ничего не выбрано
+                brandContainer.style.display = 'none';
+                modelContainer.style.display = 'none';
+                brandSelect.required = false;
+            }
+        });
         
         // Показ модального окна цен
         showPricesBtn.addEventListener('click', () => {
@@ -1388,6 +2390,11 @@
         heroOrderBtn.addEventListener('click', () => {
             orderModal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
+        });
+        urgentBtn.addEventListener('click', () => {
+            orderModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+            document.getElementById('orderProblem').value = 'Срочный ремонт! Приеду сразу.';
         });
         orderFromPrices.addEventListener('click', () => {
             pricesModal.style.display = 'none';
@@ -1480,7 +2487,19 @@
         document.querySelectorAll('.service-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 const service = this.getAttribute('data-service');
-                document.getElementById('orderDevice').value = service;
+                
+                // Автоматически выбираем тип устройства в зависимости от услуги
+                if (service.includes('Смартфон') || service.includes('Телефон')) {
+                    document.getElementById('orderDeviceType').value = 'phone';
+                    document.getElementById('orderDeviceType').dispatchEvent(new Event('change'));
+                } else if (service.includes('Ноутбук') || service.includes('Компьютер')) {
+                    document.getElementById('orderDeviceType').value = 'laptop';
+                    document.getElementById('orderDeviceType').dispatchEvent(new Event('change'));
+                } else if (service.includes('Игровые')) {
+                    document.getElementById('orderDeviceType').value = 'console';
+                    document.getElementById('orderDeviceType').dispatchEvent(new Event('change'));
+                }
+                
                 orderModal.style.display = 'flex';
                 document.body.style.overflow = 'hidden';
             });
@@ -1492,16 +2511,18 @@
             
             const name = document.getElementById('orderName').value;
             const phone = document.getElementById('orderPhone').value;
-            const device = document.getElementById('orderDevice').value;
+            const deviceType = document.getElementById('orderDeviceType').value;
+            const brand = document.getElementById('orderBrand').value || 'Не указан';
+            const model = document.getElementById('orderModel').value || 'Не указана';
             const problem = document.getElementById('orderProblem').value;
             
             // Показываем пользователю подтверждение
-            alert(`✅ Заявка отправлена!\n\nИмя: ${name}\nТелефон: ${phone}\nУстройство: ${device}\n\nМы перезвоним в течение 5 минут.`);
+            alert(`✅ Заявка отправлена!\n\nИмя: ${name}\nТелефон: ${phone}\nТип: ${deviceType}\nБренд: ${brand}\nМодель: ${model}\n\nМы перезвоним в течение 5 минут.`);
             
             // Отправка в Telegram (раскомментировать для работы)
             // const telegramBotToken = 'ВАШ_ТОКЕН_БОТА';
             // const chatId = 'ВАШ_CHAT_ID';
-            // const message = `🎯 НОВАЯ ЗАЯВКА НА РЕМОНТ\n\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n📱 Устройство: ${device}\n🔧 Проблема: ${problem}\n📍 Город: Златоуст`;
+            // const message = `🎯 НОВАЯ ЗАЯВКА НА РЕМОНТ\n\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n📱 Тип: ${deviceType}\n🏷️ Бренд: ${brand}\n🔧 Модель: ${model}\n🔧 Проблема: ${problem}\n📍 Город: Златоуст`;
             // 
             // fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage`, {
             //     method: 'POST',
@@ -1515,6 +2536,8 @@
             
             // Очистка формы и закрытие окна
             this.reset();
+            brandContainer.style.display = 'none';
+            modelContainer.style.display = 'none';
             closeModal(orderModal);
         });
         
@@ -1534,6 +2557,73 @@
                 }
             });
         });
+        
+        // Анимация счетчиков статистики
+        document.addEventListener('DOMContentLoaded', function() {
+            const counters = document.querySelectorAll('.stat-number');
+            
+            const animateCounter = (counter) => {
+                const target = parseInt(counter.getAttribute('data-count'));
+                const increment = target / 100;
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        counter.textContent = target + (target === 92 ? '%' : '+');
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = Math.floor(current) + (target === 92 ? '%' : '+');
+                    }
+                }, 20);
+            };
+            
+            // Запуск при прокрутке
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounter(entry.target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            });
+            
+            counters.forEach(counter => observer.observe(counter));
+        });
+        
+        // FAQ аккордеон
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Таймер обратного отсчета для акции (до 31.01.2026)
+        function updatePromoTimer() {
+            const endDate = new Date('2026-01-31T23:59:59').getTime();
+            const now = new Date().getTime();
+            const timeLeft = endDate - now;
+            
+            if (timeLeft > 0) {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                
+                const timerElement = document.querySelector('.promo-hot .promo-date');
+                if (timerElement && days < 60) { // Показываем только если меньше 60 дней осталось
+                    timerElement.innerHTML = `Осталось: <strong>${days} дней ${hours} часов</strong>`;
+                }
+            } else {
+                const timerElement = document.querySelector('.promo-hot .promo-date');
+                if (timerElement) {
+                    timerElement.innerHTML = `Акция завершена`;
+                }
+            }
+        }
+        
+        // Обновляем таймер каждую минуту
+        setInterval(updatePromoTimer, 60000);
+        updatePromoTimer(); // Первый запуск
     </script>
 </body>
 </html>
